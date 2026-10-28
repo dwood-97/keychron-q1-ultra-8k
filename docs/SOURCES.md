@@ -56,7 +56,7 @@ Prefer current, model-specific official documentation over older QMK/VIA example
 
 ## Evidence status
 
-- Physical device: the user confirmed the generated Conservative import and F13-F18 display on the Q1 Ultra 8K in the V1.0.2 environment.
+- Physical device: the user confirmed the generated Conservative import and F13-F18 display on the Q1 Ultra 8K in the V1.0.0 environment.
 - Reverse engineered: the accepted `MD5` is the MD5 of compact serialized `keymap` JSON; confirmed by the factory digest and successful corrected import.
 - Awaiting direct game test: whether WoW Forever accepts Numpad 1-6 and whether those inputs are ergonomic alongside Caps-held WASD.
 - Not established: any official Blizzard statement that F13-F24 are supported; current community reports indicate they are not.

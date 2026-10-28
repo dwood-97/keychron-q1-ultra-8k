@@ -12,7 +12,7 @@ The captured export contains these keys:
 {
   "id": <integer>,
   "keymap": [<layer 0>, <layer 1>, <layer 2>, <layer 3>],
-  "version": "1.0.2",
+  "version": "1.0.0",
   "MD5": "<MD5 of compact serialized keymap array>",
   "knob": [<layer 0>, <layer 1>, <layer 2>, <layer 3>]
 }
@@ -21,7 +21,7 @@ The captured export contains these keys:
 Observed values in the factory baseline:
 
 - `id`: `875827728`
-- `version`: `1.0.2`
+- `version`: `1.0.0`
 - keymap layers: `4`
 - key entries per layer: `98, 98, 98, 98`
 
@@ -90,7 +90,7 @@ The factory keymap serializes to `10cfb8ae547419ff0c5257e0b8a01bac`, matching
 its field. The modified Conservative profile serializes to
 `918db7c7dcd71e0e1b7c04d19a11a8b3`; after replacing its stale factory MD5 with
 that value, Keychron Launcher imported it successfully on a physical Q1 Ultra
-8K in the user's V1.0.2 environment. The earlier stale-MD5 version was rejected
+8K in the user's V1.0.0 environment. The earlier stale-MD5 version was rejected
 as `Invalid Configuration`.
 
 This formula is experimentally established for this export generation; Keychron

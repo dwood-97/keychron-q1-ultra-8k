@@ -5,7 +5,7 @@
   "source_filename": "Keymap-Keychron Q1 Ultra 8K ANSI-28-16-31.json",
   "preserved_verbatim": true,
   "export_schema": {
-    "version": "1.0.2",
+    "version": "1.0.0",
     "id": 875827728,
     "keymap_layers": 4,
     "key_entries_per_layer": [

@@ -12,7 +12,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent.parent
 FACTORY_EXPORT = ROOT / "exports/factory/Keymap-Keychron Q1 Ultra 8K ANSI-28-16-31.json"
 EXPECTED_ID = 875827728
-EXPECTED_VERSION = "1.0.2"
+EXPECTED_VERSION = "1.0.0"
 EXPECTED_LAYER_COUNT = 4
 EXPECTED_ENTRIES_PER_LAYER = 98
 WASD_POSITIONS = {

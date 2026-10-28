@@ -27,7 +27,7 @@ Movement remains conventional `WASD` unless deliberately changed in-game.
 
 ## What We Know
 
-Verified on the physical Q1 Ultra 8K in the user's V1.0.2 environment:
+Verified on the physical Q1 Ultra 8K in the user's V1.0.0 environment:
 
 - A generated keymap with a recalculated keymap MD5 imports successfully.
 - Launcher displayed the Conservative profile's Caps Lock/F13, PgUp/F14,

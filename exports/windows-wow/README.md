@@ -1,13 +1,18 @@
-# Windows / WoW profiles
+# Windows / WoW Experiments
 
-All profiles are derived from the pristine factory Launcher export.
+These generated layouts are complete Launcher import files, but none is a
+recommended production WoW Forever profile. They were built around F13-F24,
+which the keyboard emits but current WoW Forever community reports say cannot
+be bound.
 
-| Profile | Strategy | Extra WoW inputs |
-|---|---|---:|
-| `conservative/` | Standalone underused keys only | 6 |
-| `balanced/` | Caps momentary Layer 3 + standalone keys | 12 |
-| `aggressive/` | Caps momentary Layer 3 with full F13–F24 left-hand bank | 12 |
+| Profile | Experiment |
+|---|---|
+| `conservative/` | Six standalone F13-F18 outputs; physically imported successfully after checksum correction |
+| `balanced/` | Caps-held Layer 3 plus F13-F24 outputs |
+| `aggressive/` | Caps-held F13-F24 left-hand bank |
 
-Recommended test order: conservative → balanced → aggressive. Importing another profile is the rollback mechanism; the untouched factory export remains in `../factory/`.
-
-The `MD5` field from the factory export is preserved in each derived keymap because it appears to be device/definition metadata rather than a raw file checksum. Treat the first import of each generated profile as a validation test in Keychron Launcher.
+For the next game-input test, use the standard-keypad candidate under
+`../experiments/wow-keypad-layer/`. Each modified keymap must have its `MD5`
+recalculated with `tools/update_checksum.py`, then pass `tools/validate_json.py`.
+The MD5 is calculated from compact serialized `keymap` JSON, not copied from the
+factory export.

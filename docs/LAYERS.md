@@ -80,6 +80,14 @@ Notable factory assignments observed:
 - Battery status is present on the lower-left letter region.
 - Most unrelated keys are pass-through/transparent.
 - Knob behavior is assigned to RGB control.
+- Knob behavior is assigned to RGB control.
+
+On the factory Layer 3, the W/A/S/D matrix positions contain non-transparent
+Keychron-specific values. Their exact labels are not inferred from undocumented
+numeric codes. Any Caps-to-Layer-3 gaming profile must explicitly set all four
+positions to transparent; this makes movement pass through, but replaces those
+factory Layer 3 functions while either the factory Fn key or Caps activates the
+same layer.
 
 ## Design rules for customization
 
@@ -92,9 +100,15 @@ Notable factory assignments observed:
 
 ## Candidate Windows/WoW changes
 
-Do not apply these blindly; treat them as design candidates to validate in-game:
+The current keypad experiment is described in `docs/GAMING.md`:
 
-- Consider `Caps Lock` as a dual-role key only if hold/tap timing proves reliable during combat.
-- Consider assigning otherwise-unused Windows keycodes such as `F13`–`F24` to expendable physical positions if WoW recognizes them cleanly.
-- Consider keeping the navigation column (`PgUp`, `PgDn`, `Home`) available for out-of-combat utility unless a gaming-specific need clearly outweighs it.
-- Keep `WASD`, `1–5`, `Q`, `E`, `R`, `T`, `F`, `G`, `Z`, `X`, `C`, `V`, `Tab`, `Shift`, `Ctrl`, `Alt` directly usable on Layer 2.
+- Caps Lock is momentary Layer 3 while held; it no longer sends Caps Lock on
+- Caps Lock is momentary Layer 3 while held; it no longer sends Caps Lock on
+	Layer 2 in this experiment.
+- Layer 3 maps `Q/E/R/F/Z/X` to standard Numpad 1-6 HID usages.
+- `WASD` remains transparent on Layer 3, preserving movement while Caps is held.
+- Layer 2 otherwise remains the stock Windows layout; Layers 0/1 stay unchanged.
+- F13-F24 assignments remain useful import experiments but are not recommended
+- F13-F24 assignments remain useful import experiments but are not recommended
+	for WoW Forever until direct client testing or official support confirms them.
+- Standard keypad inputs are only candidates until confirmed in the live client.

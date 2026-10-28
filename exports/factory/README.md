@@ -25,7 +25,7 @@ That field does **not** equal the MD5 hash of the downloaded JSON file (`4e933e0
 The factory export contains:
 
 - `id`: `875827728`
-- `version`: `1.0.0`
+- `version`: `1.0.2`
 - `keymap`: 4 layers
 - entries per layer: `98, 98, 98, 98`
 - `knob`: 4 layer-specific rotary definitions

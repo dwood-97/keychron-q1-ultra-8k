@@ -1,0 +1,2 @@
+exports/windows-wow/**/*.json -text
+exports/experiments/**/*.json -text

@@ -1,7 +1,7 @@
 # Changelog
 
 
-## 0.1.0-factory
+## Factory baseline milestone (untagged)
 
 - Preserved the genuine factory-reset Keychron Launcher keymap export.
 - Recorded SHA-256 integrity metadata.
@@ -21,16 +21,14 @@ All notable configuration changes should be recorded here.
 - Added JSON validation and export comparison helpers.
 - Added placeholders for genuine Keychron Launcher exports.
 
-## Suggested first tag
+## Release status
 
-After the untouched factory export is committed, create:
+The repository currently has no Git tags. After the factory-file integrity discrepancy is reconciled, tag the validated import tooling/profile-generation milestone as `v0.2.0-import-validated`. Do not tag a production WoW release until a profile is accepted by the current WoW Forever client and passes gameplay/ergonomics testing; use `v1.0.0-wow` for that later milestone.
+## 2026-10-28 — Hardware validation
 
-```text
-v0.1.0-factory
-```
-## 2026-10-28 — WoW profile variants
-
-- Added conservative, balanced, and aggressive Windows/WoW keymap candidates.
-- Added `docs/PROFILES.md`.
-- Added experiment directories for Hold/Tap, Snap Action, and layer remaps.
-- Preserved factory metadata in all derived keymap exports.
+- First generated keymap imported on a physical Keychron Q1 Ultra 8K ANSI in the user's V1.0.2 environment.
+- Launcher rejected the initial Conservative import as `Invalid Configuration` because the edited keymap retained a stale `MD5`.
+- Recalculated `MD5` from compact serialized `keymap` JSON; the corrected Conservative export imported successfully.
+- Confirmed Launcher displayed Caps Lock/F13, PgUp/F14, PgDn/F15, Home/F16, Delete/F17, and knob/F18; factory Layer 3 passthrough/wireless/RGB behavior remained intact.
+- Reclassified F13-F24 layouts as import experiments pending WoW Forever support; added a Caps-held standard-keypad experiment for the next test.
+- Added schema, matrix, Mac-layer, knob, and keymap-MD5 validation; checksum updater; board-aware comparison; and a keypad experiment builder.

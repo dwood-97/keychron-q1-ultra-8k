@@ -1,6 +1,7 @@
 # Aggressive WoW profile
 
-Purpose: turn Caps Lock into a dedicated MMO modifier and expose the full F13–F24 range under the left hand.
+Purpose: preserve the historical Caps-held F13-F24 import experiment. Not a
+recommended WoW Forever profile unless the client adds support for those keys.
 
 ## Layer 2 change
 
@@ -22,7 +23,14 @@ Purpose: turn Caps Lock into a dedicated MMO modifier and expose the full F13–
 - Caps + N → F24
 
 W, A, S and D intentionally remain pass-through so movement continues while Caps is held. Factory Fn+1 through Fn+4 wireless controls remain untouched.
+W, A, S and D are explicitly transparent on Layer 3 so movement continues while
+Caps is held. This replaces the four factory Layer 3 assignments on those keys
+whenever Layer 3 is active. Factory Fn+1 through Fn+4 wireless controls remain
+untouched.
 
 The Caps assignment uses keycode `21027`, copied directly from the factory Windows `Fn(3)` key.
 
-This file is derived from the factory export. The exported `id`, `version`, and `MD5` metadata are intentionally preserved unchanged.
+This file is derived from the current factory export. Its MD5 must match the
+compact serialized `keymap` array. Use `tools/update_checksum.py` after edits and
+`tools/validate_json.py` before import. The layout remains experimental because
+WoW Forever binding support for F13-F24 is not established.

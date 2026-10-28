@@ -25,42 +25,65 @@ Space
 
 Movement remains conventional `WASD` unless deliberately changed in-game.
 
-## Recommended philosophy
+## What We Know
+
+Verified on the physical Q1 Ultra 8K in the user's V1.0.2 environment:
+
+- A generated keymap with a recalculated keymap MD5 imports successfully.
+- Launcher displayed the Conservative profile's Caps Lock/F13, PgUp/F14,
+	PgDn/F15, Home/F16, Delete/F17, and knob/F18 assignments.
+- Layer 3 retained its factory passthrough, wireless, and RGB behavior.
+- F13-F18 are emitted correctly by the keyboard, but are not currently a viable
+	WoW Forever binding foundation.
+
+Current Blizzard forum search results include WoW Forever player reports and
+support requests explicitly asking for F13-F24 binding support. These are
+first-party-hosted community reports, not a Blizzard statement of supported
+inputs. No official WoW Forever keycode list was found. Treat F13-F24 as
+unsupported for this project unless a direct in-game test or Blizzard release
+confirms otherwise.
+
+## Recommended Architecture
 
 ### Layer 2
 
-Keep as the normal Windows base and gaming layer.
-
-Use standard letters/numbers wherever possible. The best gaming layout is one that does not require remembering a second keyboard just to type in chat.
+Keep as the normal Windows base and gaming layer. Preserve ordinary typing,
+WASD, and the familiar Windows layout.
 
 ### Layer 3
 
-Use for secondary functions:
+Keep factory utilities by default. For the gaming experiment, use Caps Lock as
+momentary Layer 3 and map six left-hand keys to standard keypad HID usages:
 
-- media
-- RGB
-- wireless selection
-- battery status
-- screenshots
-- Windows utilities
-- infrequent navigation
-- optional extra gaming keycodes
+| Held key | Layer 3 output |
+|---|---|
+| Caps + Q | Numpad 1 |
+| Caps + E | Numpad 2 |
+| Caps + R | Numpad 3 |
+| Caps + F | Numpad 4 |
+| Caps + Z | Numpad 5 |
+| Caps + X | Numpad 6 |
 
-## F13–F24 strategy
+WASD remain transparent on Layer 3 so movement passes through while Caps is
+held. These USB HID keypad usages are distinct from the top-row digits and are
+not F13-F24. They are a compatibility probe, not a production WoW profile: bind
+and test them in the current WoW Forever client before relying on them. Keypad
+behavior can vary with the client and Windows Num Lock state, so test both the
+game and ordinary Windows typing.
 
-Keychron Launcher visibly exposes higher function keycodes including F20–F24 in its Windows special-key section, and standard function keys include F13–F19.
+The factory Layer 3 has non-transparent Keychron-specific assignments at W/A/S/D.
+Setting them transparent is required for movement while the layer is active and
+replaces those four factory functions whenever either Caps or the normal Fn key
+activates Layer 3.
 
-These are promising for gaming because they are normally unused by Windows applications and therefore may avoid conflicts.
+Other Layer 3 positions retain their factory utility behavior.
 
-Before standardizing on them:
+## F13–F24 Experiment
 
-1. Assign one test key to `F13`.
-2. Verify it in Keychron Launcher Key Test or an OS key tester.
-3. Bind it directly in World of Warcraft.
-4. Test modifiers such as Shift+F13 if relevant.
-5. Repeat with the highest keycodes you intend to use.
-
-Do not build the entire profile around F13–F24 until this test passes.
+The F13-F24 profiles remain useful for validating keymap generation and the
+Launcher import path. Their keycodes were displayed on the keyboard, but current
+WoW Forever community reports indicate that the client does not bind them. They
+are experiments only and must not be presented as recommended WoW profiles.
 
 ## Hold/Tap strategy
 
@@ -87,14 +110,15 @@ If tested, verify movement combinations such as:
 - strafing while casting
 - jumping while moving
 
-## Suggested first gaming iteration
+## Validation Order
 
-Start conservative:
+1. Import `exports/experiments/wow-keypad-layer/Keymap-Q1-Ultra-8K-WoW-keypad-layer.json`.
+2. Confirm the Caps momentary layer, six keypad assignments, and transparent WASD
+	in Launcher and a Windows key-event tester.
+3. In WoW Forever's key-binding UI, attempt to bind Numpad 1 through Numpad 6.
+4. Test each binding in a safe area while moving with WASD and holding Caps.
+5. Test normal typing and the effect of Num Lock; rollback by importing the
+	factory export if any base behavior is wrong.
 
-1. Keep Layer 2 nearly stock.
-2. Keep the existing Fn access to Layer 3.
-3. Test one or two spare physical keys with `F13`/`F14`.
-4. Bind those in WoW and play normally.
-5. Only then expand to additional extra keycodes or Hold/Tap behavior.
-
-This keeps rollback trivial and lets ergonomics drive the design instead of theory.
+Do not add Hold/Tap, macros, or multi-action automation to this profile. Promote
+it only after physical and in-game validation.

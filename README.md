@@ -42,8 +42,13 @@ Windows customization should primarily target **Layers 2 and 3**. Layers 0 and 1
 ├── exports/
 │   ├── factory/
 │   ├── windows-default/
-│   └── windows-wow/
+│   ├── windows-wow/
+│   └── experiments/
 └── tools/
+    ├── keymap_format.py
+    ├── update_checksum.py
+    ├── build_wow_keypad_layer.py
+        ├── prepare_caps_layer.py
     ├── compare_exports.py
     └── validate_json.py
 ```
@@ -71,7 +76,10 @@ A gaming-oriented Windows profile built around Layers 2 and 3 and designed to co
 5. Build Windows changes on Layers 2 and 3.
 6. Export each known-good configuration into its matching directory.
 7. Validate JSON files with `tools/validate_json.py`.
-8. Compare exports with `tools/compare_exports.py` before importing a new revision.
+7. Recalculate the keymap MD5 with `python tools/update_checksum.py FILE`.
+8. Validate with `python tools/validate_json.py FILE`.
+9. Compare with `python tools/compare_exports.py FACTORY.json FILE`.
+10. Import only after all checks pass; keep the factory export unchanged.
 
 ## Safety rules
 
@@ -88,15 +96,11 @@ A genuine factory-reset Keychron Launcher export has been captured and preserved
 `exports/factory/Keymap-Keychron Q1 Ultra 8K ANSI-28-16-31.json`
 
 The baseline contains four keymap layers and four layer-specific knob definitions. Its SHA-256 is recorded in `exports/factory/SHA256SUMS`.
+The baseline contains four keymap layers and four layer-specific knob definitions. Its whole-file SHA-256 is recorded separately from Keychron's keymap MD5. The current worktree already contains a local factory-export edit relative to the committed snapshot; its recorded SHA-256 does not match the current file. This task preserves that file and does not normalize the discrepancy. Confirm the intended genuine export before treating the manifest as current.
 
 The next phase is to design the first Windows/WoW revision from a **copy** of this baseline, changing Layers 2 and 3 only unless a specific Mac-side change is intentionally requested.
+The generated Conservative profile was imported successfully after its keymap MD5 was recalculated. F13-F18 were displayed by Launcher, but F13-F24 remain experiments because WoW Forever support is not established. No production WoW profile is currently recommended.
 
 ## WoW test profiles
 
-Three generated profiles live under `exports/windows-wow/`:
-
-- `conservative/` — six standalone F13–F18 inputs
-- `balanced/` — Caps-driven Layer 3 plus standalone F19–F24 inputs
-- `aggressive/` — Caps-driven full F13–F24 MMO layer
-
-See `docs/PROFILES.md` for the design and test order.
+The three profiles under `exports/windows-wow/` are preserved F13-F24 import experiments only. The next WoW input test is `exports/experiments/wow-keypad-layer/`: Caps holds Layer 3, Q/E/R/F/Z/X emit Numpad 1-6, and WASD passes through. It is not a production profile until accepted by the current WoW Forever client and validated during play.

@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.swp
+__pycache__/
+*.pyc
+
+# Never commit credentials or browser/session artifacts.
+.env
+.env.*
+*.pem
+*.key

@@ -33,3 +33,14 @@ After any factory reset, export the fresh state before making additional changes
 ## Firmware warning
 
 Do not flash custom firmware solely to restore a keymap. Prefer Launcher import/reset and official model-specific recovery steps first.
+
+
+## Known-good factory file
+
+The current known-good factory baseline is:
+
+`exports/factory/Keymap-Keychron Q1 Ultra 8K ANSI-28-16-31.json`
+
+Before importing, you can verify its SHA-256 against `exports/factory/SHA256SUMS`.
+
+Do not replace this file with an edited version.

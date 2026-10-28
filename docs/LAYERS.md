@@ -1,5 +1,23 @@
 # Layer Reference
 
+## Factory export verification
+
+The genuine factory Launcher export confirms that the keymap contains exactly four layer arrays with 98 matrix entries each.
+
+It also confirms the rotary definitions independently for all four layers:
+
+| Layer | Counter-clockwise | Clockwise |
+|---|---|---|
+| 0 | `KC_VOLD` | `KC_VOLU` |
+| 1 | `RGB_VAD` | `RGB_VAI` |
+| 2 | `KC_VOLD` | `KC_VOLU` |
+| 3 | `RGB_VAD` | `RGB_VAI` |
+
+The Fn-layer export data uses value `1` extensively at positions shown as pass-through in Launcher. Physical gaps use `0` in the captured matrix. Do not generalize these numeric values to other boards without verification.
+
+See `EXPORT_FORMAT.md` for the captured schema.
+
+
 This document records the factory-reset layout as visible in Keychron Launcher v1.5.2.
 
 ## Layer 0 — macOS base

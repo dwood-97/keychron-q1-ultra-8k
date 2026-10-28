@@ -35,6 +35,7 @@ Windows customization should primarily target **Layers 2 and 3**. Layers 0 and 1
 │   ├── SOURCES.md
 │   ├── HARDWARE.md
 │   ├── LAYERS.md
+│   ├── EXPORT_FORMAT.md
 │   ├── GAMING.md
 │   ├── MACROS.md
 │   └── RESTORE.md
@@ -82,4 +83,20 @@ A gaming-oriented Windows profile built around Layers 2 and 3 and designed to co
 
 ## Current status
 
-The keyboard has been factory reset. The repository scaffold and factory layer documentation are ready. The next required artifact is a genuine **Keychron Launcher Export** from the current factory-reset state.
+A genuine factory-reset Keychron Launcher export has been captured and preserved verbatim:
+
+`exports/factory/Keymap-Keychron Q1 Ultra 8K ANSI-28-16-31.json`
+
+The baseline contains four keymap layers and four layer-specific knob definitions. Its SHA-256 is recorded in `exports/factory/SHA256SUMS`.
+
+The next phase is to design the first Windows/WoW revision from a **copy** of this baseline, changing Layers 2 and 3 only unless a specific Mac-side change is intentionally requested.
+
+## WoW test profiles
+
+Three generated profiles live under `exports/windows-wow/`:
+
+- `conservative/` — six standalone F13–F18 inputs
+- `balanced/` — Caps-driven Layer 3 plus standalone F19–F24 inputs
+- `aggressive/` — Caps-driven full F13–F24 MMO layer
+
+See `docs/PROFILES.md` for the design and test order.

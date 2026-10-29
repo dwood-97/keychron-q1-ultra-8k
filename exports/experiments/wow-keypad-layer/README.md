@@ -1,6 +1,6 @@
 # WoW Forever Shifted-Symbol Layer Experiment
 
-Status: builder updated and structurally defined; regenerate the JSON before the next physical import. This is not a production profile.
+Status: generated and structurally validated; awaiting physical import and in-game testing. This is not a production profile.
 
 ## Assignments
 
@@ -40,7 +40,7 @@ new generated artifact.
 ## Physical Test
 
 1. Keep the genuine factory export available for rollback. Connect the keyboard to Keychron Launcher using the supported connection method.
-2. Regenerate the JSON with `python tools/build_wow_keypad_layer.py`, refresh `SHA256SUMS`, then import `Keymap-Q1-Ultra-8K-WoW-keypad-layer.json` from this directory.
+2. Import `Keymap-Q1-Ultra-8K-WoW-keypad-layer.json` from this directory.
 3. In Launcher, verify Layer 2 knob press is Play/Pause, Layer 2 Caps Lock is momentary Layer 3, and Layer 3 Q/E/R/F/V/C show `! @ # $ % ^`. Confirm W/A/S/D are passthrough and Layers 0/1 remain unchanged.
 4. Check the knob press generates Play/Pause, then check Caps+Q/E/R/F/V/C produces the intended shifted symbols in a local keyboard event tester or the game's key-binding screen.
 5. In WoW Forever's key-binding screen, try each symbol individually and confirm how the client labels it. Test them in a safe area while holding Caps, including Caps+W/A/S/D movement combinations.

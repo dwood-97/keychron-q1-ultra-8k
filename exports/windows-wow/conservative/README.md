@@ -1,8 +1,6 @@
 # Conservative WoW profile
 
-Purpose: six-output experiment to verify that generated keymaps import and
-higher function keycodes can be emitted by the keyboard. F13-F18 are not a
-recommended WoW Forever binding strategy.
+Purpose: six-output experiment to verify that generated keymaps import.
 
 ## Layer 2 changes
 

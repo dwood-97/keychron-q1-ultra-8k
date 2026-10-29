@@ -35,7 +35,6 @@ values.
 - Launcher displayed the F13-F18 assignments correctly.
 - Layer 3 retained its factory passthrough, wireless, and RGB behavior.
 - OS-level event delivery and WoW Forever binding support were not established
-- OS-level event delivery and WoW Forever binding support were not established
 	by that test.
 
 Current Blizzard forum search results include WoW Forever player reports and

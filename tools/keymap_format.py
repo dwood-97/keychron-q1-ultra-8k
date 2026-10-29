@@ -55,10 +55,12 @@ HID_KEY_NAMES = {
     87: "Numpad plus", 88: "Numpad Enter",
     **{value: f"Numpad {value - 88}" for value in range(89, 99)},
     99: "Numpad decimal", 100: "Non-US backslash", 101: "Application",
-    102: "Power", 103: "Numpad equal", 168: "Mute",
+    102: "Power", 103: "Numpad equal", 168: "Mute", 174: "Play/Pause",
     **{value: f"F{value - 91}" for value in range(104, 116)},
     224: "Left Ctrl", 225: "Left Shift", 226: "Left Alt", 227: "Left Win",
     228: "Right Ctrl", 229: "Right Shift", 230: "Right Alt", 231: "Right Win",
+    542: "Shift+1 (!)", 543: "Shift+2 (@)", 544: "Shift+3 (#)",
+    545: "Shift+4 ($)", 546: "Shift+5 (%)", 547: "Shift+6 (^)",
     0: "None", 1: "Transparent", 21027: "Momentary Layer 3",
 }
 

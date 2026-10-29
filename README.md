@@ -100,4 +100,4 @@ The generated Conservative profile imported successfully after its keymap MD5 wa
 
 ## WoW test profiles
 
-The three profiles under `exports/windows-wow/` are preserved F13-F24 import experiments only. The current `exports/experiments/wow-keypad-layer/` builder uses Caps as momentary Layer 3, maps Q/E/R/F/V/C to `! @ # $ % ^`, keeps W/A/S/D transparent, and sets Layer 2 knob press to Play/Pause. The committed generated JSON must be regenerated before the next physical import. The shifted symbols are equivalent to Shift+1 through Shift+6, so this remains an experiment until WoW Forever binding behavior and conflicts are tested.
+The three profiles under `exports/windows-wow/` are preserved F13-F24 import experiments only. The current generated `exports/experiments/wow-keypad-layer/` profile uses Caps as momentary Layer 3, maps Q/E/R/F/V/C to `! @ # $ % ^`, keeps W/A/S/D transparent, and sets Layer 2 knob press to Play/Pause. The shifted symbols are equivalent to Shift+1 through Shift+6, so this remains an experiment until WoW Forever binding behavior and conflicts are tested.

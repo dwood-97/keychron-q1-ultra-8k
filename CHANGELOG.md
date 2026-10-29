@@ -23,10 +23,11 @@ All notable configuration changes should be recorded here.
 
 ## Release status
 
-The repository currently has no Git tags. After the factory-file integrity discrepancy is reconciled, tag the validated import tooling/profile-generation milestone as `v0.2.0-import-validated`. Do not tag a production WoW release until a profile is accepted by the current WoW Forever client and passes gameplay/ergonomics testing; use `v1.0.0-wow` for that later milestone.
+The repository currently has no Git tags. Tag the validated import tooling/profile-generation milestone as `v0.2.0-import-validated`. Do not tag a production WoW release until a profile is accepted by the current WoW Forever client and passes gameplay/ergonomics testing; use `v1.0.0-wow` for that later milestone.
+
 ## 2026-10-28 — Hardware validation
 
-- First generated keymap imported on a physical Keychron Q1 Ultra 8K ANSI in the user's V1.0.0 environment.
+- First generated keymap imported on a physical Keychron Q1 Ultra 8K ANSI with device Current Version V1.0.2; the Launcher export JSON field remains `"version":"1.0.0"`.
 - Launcher rejected the initial Conservative import as `Invalid Configuration` because the edited keymap retained a stale `MD5`.
 - Recalculated `MD5` from compact serialized `keymap` JSON; the corrected Conservative export imported successfully.
 - Confirmed Launcher displayed Caps Lock/F13, PgUp/F14, PgDn/F15, Home/F16, Delete/F17, and knob/F18; factory Layer 3 passthrough/wireless/RGB behavior remained intact.

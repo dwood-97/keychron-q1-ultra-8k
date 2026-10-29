@@ -27,14 +27,16 @@ Movement remains conventional `WASD` unless deliberately changed in-game.
 
 ## What We Know
 
-Verified on the physical Q1 Ultra 8K in the user's V1.0.0 environment:
+Verified on the physical Q1 Ultra 8K with device Current Version V1.0.2. The
+Launcher export JSON field is `"version":"1.0.0"`; these are distinct version
+values.
 
-- A generated keymap with a recalculated keymap MD5 imports successfully.
-- Launcher displayed the Conservative profile's Caps Lock/F13, PgUp/F14,
-	PgDn/F15, Home/F16, Delete/F17, and knob/F18 assignments.
+- The corrected generated keymap imported successfully in Keychron Launcher.
+- Launcher displayed the F13-F18 assignments correctly.
 - Layer 3 retained its factory passthrough, wireless, and RGB behavior.
-- F13-F18 are emitted correctly by the keyboard, but are not currently a viable
-	WoW Forever binding foundation.
+- OS-level event delivery and WoW Forever binding support were not established
+- OS-level event delivery and WoW Forever binding support were not established
+	by that test.
 
 Current Blizzard forum search results include WoW Forever player reports and
 support requests explicitly asking for F13-F24 binding support. These are

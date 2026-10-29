@@ -18,7 +18,10 @@ The export also contains a top-level Keychron field:
 
 `"MD5": "10cfb8ae547419ff0c5257e0b8a01bac"`
 
-That field does **not** equal the MD5 hash of the downloaded JSON file (`4e933e03dacdf3d61cd8bfa0d5c122b9`). Treat the Keychron field as opaque application metadata; do not recalculate or overwrite it unless official documentation establishes its semantics.
+The factory value is the MD5 of the compact JSON serialization of the `keymap`
+array, not a hash of the downloaded JSON bytes. The factory export itself is
+immutable and must remain untouched. Every derived/generated profile must
+recalculate `MD5` after changing `keymap`, using `tools/update_checksum.py`.
 
 ## Confirmed export structure
 

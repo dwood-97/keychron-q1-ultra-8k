@@ -15,7 +15,8 @@ recommended WoW Forever binding strategy.
 
 Layers 0, 1 and 3 remain factory. Knob rotation remains factory (volume on Layer 2, RGB brightness on Layer 3).
 
-This profile was successfully imported on a physical Q1 Ultra 8K in the user's
-V1.0.0 environment after recalculating the MD5. Launcher displayed the six
-assignments above. The accepted MD5 is derived from compact serialized `keymap`
-JSON; it is not the factory value. Use `tools/validate_json.py` to check it.
+This profile was successfully imported on a physical Q1 Ultra 8K with device
+Current Version V1.0.2 after recalculating the MD5. The Launcher export JSON
+field remains `"version":"1.0.0"`; Launcher displayed the six assignments
+above. The accepted MD5 is derived from compact serialized `keymap` JSON; it is
+not the factory value. Use `tools/validate_json.py` to check it.

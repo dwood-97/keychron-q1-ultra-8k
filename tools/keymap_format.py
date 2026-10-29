@@ -12,7 +12,6 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent.parent
 FACTORY_EXPORT = ROOT / "exports/factory/Keymap-Keychron Q1 Ultra 8K ANSI-28-16-31.json"
 EXPECTED_ID = 875827728
-EXPECTED_VERSION = "1.0.0"
 EXPECTED_LAYER_COUNT = 4
 EXPECTED_ENTRIES_PER_LAYER = 98
 WASD_POSITIONS = {
@@ -94,8 +93,11 @@ def validate_export(
         errors.append(f"missing root fields: {', '.join(sorted(missing))}")
     if data.get("id") != EXPECTED_ID:
         errors.append(f"id must be {EXPECTED_ID} for this Q1 Ultra 8K export")
-    if data.get("version") != EXPECTED_VERSION:
-        errors.append(f"version must be {EXPECTED_VERSION} for this baseline")
+    baseline_version = baseline.get("version")
+    if not isinstance(baseline_version, str):
+        errors.append("factory baseline must contain a string export version")
+    elif data.get("version") != baseline_version:
+        errors.append(f"version must match factory export version {baseline_version!r}")
 
     keymap = data.get("keymap")
     baseline_keymap = baseline.get("keymap")

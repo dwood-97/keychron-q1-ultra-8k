@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import sys
 import tempfile
@@ -11,7 +12,7 @@ TOOLS = Path(__file__).resolve().parent
 sys.path.insert(0, str(TOOLS))
 
 import update_checksum
-from keymap_format import FACTORY_EXPORT, keymap_md5, load_json, validate_export
+from keymap_format import FACTORY_EXPORT, ROOT, keymap_md5, load_json, validate_export
 
 
 class KeymapFormatTests(unittest.TestCase):
@@ -33,6 +34,17 @@ class KeymapFormatTests(unittest.TestCase):
         candidate["keymap"][2][0]["val"] = 104
         candidate["MD5"] = keymap_md5(candidate)
         self.assertEqual(validate_export(candidate, self.factory), [])
+
+    def test_export_version_is_compared_to_factory_baseline(self) -> None:
+        baseline = copy.deepcopy(self.factory)
+        candidate = copy.deepcopy(self.factory)
+        baseline["version"] = "fixture-version"
+        candidate["version"] = "fixture-version"
+        self.assertEqual(validate_export(candidate, baseline), [])
+
+        candidate["version"] = "different-version"
+        errors = validate_export(candidate, baseline)
+        self.assertTrue(any("must match factory export version" in error for error in errors))
 
     def test_duplicate_matrix_position_is_rejected(self) -> None:
         candidate = copy.deepcopy(self.factory)
@@ -73,6 +85,40 @@ class KeymapFormatTests(unittest.TestCase):
             self.assertTrue(update_checksum.update(path, check_only=False))
             updated = load_json(path)
         self.assertEqual(updated["MD5"], keymap_md5(updated))
+
+    def test_generated_sha256_manifests_match_all_json(self) -> None:
+        generated_roots = (ROOT / "exports/windows-wow", ROOT / "exports/experiments")
+        listed_files: set[Path] = set()
+        for root in generated_roots:
+            for manifest in root.rglob("SHA256SUMS"):
+                for line_number, line in enumerate(
+                    manifest.read_text(encoding="utf-8").splitlines(), start=1
+                ):
+                    if not line.strip():
+                        continue
+                    parts = line.split(maxsplit=1)
+                    self.assertEqual(
+                        len(parts),
+                        2,
+                        f"Malformed entry in {manifest}:{line_number}",
+                    )
+                    expected_hash, filename = parts
+                    artifact = manifest.parent / filename
+                    self.assertTrue(artifact.is_file(), f"Missing artifact: {artifact}")
+                    actual_hash = hashlib.sha256(artifact.read_bytes()).hexdigest()
+                    self.assertEqual(
+                        actual_hash,
+                        expected_hash.lower(),
+                        f"Stale SHA-256 in {manifest}:{line_number}",
+                    )
+                    listed_files.add(artifact.resolve())
+
+        generated_json = {
+            path.resolve()
+            for root in generated_roots
+            for path in root.rglob("*.json")
+        }
+        self.assertEqual(generated_json, listed_files)
 
 
 if __name__ == "__main__":

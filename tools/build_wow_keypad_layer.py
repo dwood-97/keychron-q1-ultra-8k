@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the experimental Caps-held shifted-symbol WoW input layer."""
+"""Build the experimental Caps-held F7-F12 WoW input layer."""
 
 from __future__ import annotations
 
@@ -16,16 +16,16 @@ OUTPUT = (
 ASSIGNMENTS = {
     (0, 14, 2): 174,
     (3, 0, 2): 21027,
-    (2, 1, 3): 542,
+    (2, 1, 3): 64,
     (2, 2, 3): 1,
-    (2, 3, 3): 543,
-    (2, 4, 3): 544,
+    (2, 3, 3): 65,
+    (2, 4, 3): 66,
     (3, 1, 3): 1,
     (3, 2, 3): 1,
     (3, 3, 3): 1,
-    (3, 4, 3): 545,
-    (4, 5, 3): 546,
-    (4, 4, 3): 547,
+    (3, 4, 3): 67,
+    (4, 5, 3): 68,
+    (4, 4, 3): 69,
 }
 
 

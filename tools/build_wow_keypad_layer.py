@@ -14,6 +14,7 @@ OUTPUT = (
     / "exports/experiments/wow-keypad-layer/Keymap-Q1-Ultra-8K-WoW-keypad-layer.json"
 )
 ASSIGNMENTS = {
+    (0, 14, 2): 174,
     (3, 0, 2): 21027,
     (2, 1, 3): 89,
     (2, 2, 3): 1,

@@ -4,6 +4,16 @@ This document records what is directly observable from the factory-reset export 
 
 It is intentionally descriptive rather than a claim of an official schema.
 
+## Version distinction
+
+- Device current version shown during physical validation: `V1.0.2`.
+- Genuine factory export JSON field: `"version": "1.0.0"`.
+
+The JSON field is part of the exported configuration format; it is not the
+keyboard's firmware/device current version. Derived profiles retain the
+factory export field, and validation compares candidate versions against that
+factory baseline.
+
 ## Top-level structure
 
 The captured export contains these keys:
@@ -13,7 +23,7 @@ The captured export contains these keys:
   "id": <integer>,
   "keymap": [<layer 0>, <layer 1>, <layer 2>, <layer 3>],
   "version": "1.0.0",
-  "MD5": "<opaque Keychron value>",
+  "MD5": "<MD5 of compact serialized keymap array>",
   "knob": [<layer 0>, <layer 1>, <layer 2>, <layer 3>]
 }
 ```
@@ -76,26 +86,42 @@ Knob **press** remains represented in the keymap matrix rather than in the `knob
 
 ## Integrity and the `MD5` field
 
-The export contains:
+Real-device validation established that `MD5` is not opaque device metadata and
+is not a digest of the complete JSON file. The accepted value is the MD5 of the
+compact JSON serialization of the `keymap` array:
 
-```text
-Keychron MD5 field: 10cfb8ae547419ff0c5257e0b8a01bac
-MD5 of downloaded JSON bytes: 4e933e03dacdf3d61cd8bfa0d5c122b9
-SHA-256 of downloaded JSON bytes: 123ac6b5d00e2f5454f097041eb1781c078031cdbc58427c80e78deebdbd78ab
+```python
+hashlib.md5(
+  json.dumps(data["keymap"], separators=(",", ":")).encode("utf-8")
+).hexdigest()
 ```
 
-Because the two MD5 values differ, this repository does not assume that Keychron's `MD5` field is a raw-file checksum.
+The factory keymap serializes to `10cfb8ae547419ff0c5257e0b8a01bac`, matching
+its field. The modified Conservative profile serializes to
+`918db7c7dcd71e0e1b7c04d19a11a8b3`; after replacing its stale factory MD5 with
+that value, Keychron Launcher imported it successfully on a physical Q1 Ultra
+8K in the user's V1.0.2 device environment. The accepted file's JSON
+`"version"` remained `1.0.0`; these values describe different things. The earlier
+stale-MD5 version was rejected as `Invalid Configuration`.
 
-The factory export is therefore preserved byte-for-byte, and `SHA256SUMS` is maintained independently by this repository.
+This formula is experimentally established for this export generation; Keychron
+does not publish the serialization/checksum schema in the Launcher guides linked
+from `SOURCES.md`. Repository SHA-256 files remain separate whole-file integrity
+checks and must be refreshed whenever a generated JSON file changes.
 
 ## Editing policy
 
-Until Keychron publishes a stable schema or we have validated round-trip behavior:
+For this observed Q1 Ultra 8K generation:
 
-1. Preserve genuine Launcher exports untouched.
+1. Preserve the genuine Launcher keymap export untouched.
 2. Make experiments on copies only.
 3. Change the smallest possible set of assignments.
-4. Compare candidate files against the factory baseline.
-5. Validate JSON before import.
-6. Keep the original Keychron metadata unless testing proves Launcher expects it to change.
+4. Recalculate `MD5` with `tools/update_checksum.py` after every keymap edit.
+5. Validate, compare against the factory baseline, then import.
+6. Leave `id`, export `version`, and undocumented `knob` encoding alone unless
+   separately tested.
 7. Never infer compatibility from a QMK/VIA export belonging to another model.
+
+The validator checks that keycode values are non-negative integers, but does
+not claim every integer is a valid assignment. Keychron has not published the
+full device-specific value schema.

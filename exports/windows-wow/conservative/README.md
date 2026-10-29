@@ -1,6 +1,8 @@
 # Conservative WoW profile
 
-Purpose: add six clean WoW-bindable inputs while keeping the rest of the Windows base layer stock.
+Purpose: six-output experiment to verify that generated keymaps import and
+higher function keycodes can be emitted by the keyboard. F13-F18 are not a
+recommended WoW Forever binding strategy.
 
 ## Layer 2 changes
 
@@ -13,4 +15,8 @@ Purpose: add six clean WoW-bindable inputs while keeping the rest of the Windows
 
 Layers 0, 1 and 3 remain factory. Knob rotation remains factory (volume on Layer 2, RGB brightness on Layer 3).
 
-This file is derived from the factory export. The exported `id`, `version`, and `MD5` metadata are intentionally preserved unchanged.
+This profile was successfully imported on a physical Q1 Ultra 8K with device
+Current Version V1.0.2 after recalculating the MD5. The Launcher export JSON
+field remains `"version":"1.0.0"`; Launcher displayed the six assignments
+above. The accepted MD5 is derived from compact serialized `keymap` JSON; it is
+not the factory value. Use `tools/validate_json.py` to check it.

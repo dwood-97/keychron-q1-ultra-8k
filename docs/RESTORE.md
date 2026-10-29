@@ -23,6 +23,30 @@ The safest rollback is a genuine Keychron Launcher export from the factory-reset
 4. Select the known-good export.
 5. Verify all four layers before closing Launcher.
 6. Test modifiers, Fn behavior, arrows, knob, wireless switching and typing.
+## Generate and verify a modified export
+
+For a generated profile, work only on a copy of the factory export. From the
+repository root, run:
+
+```powershell
+python tools/update_checksum.py path\to\profile.json
+python tools/validate_json.py path\to\profile.json
+python tools/compare_exports.py "exports/factory/Keymap-Keychron Q1 Ultra 8K ANSI-28-16-31.json" path\to\profile.json
+```
+
+The updater recalculates top-level `MD5` from compact serialized `keymap` JSON.
+For a Caps-to-Layer-3 experiment, run `python tools/prepare_caps_layer.py FILE`
+first to make W/A/S/D transparent and refresh its MD5. This intentionally
+replaces the factory Layer 3 functions at those positions.
+The validator rejects stale checksums and checks this board's expected metadata,
+layer/matrix dimensions, duplicate or missing matrix positions, non-negative
+integer keycode values, unchanged Mac layers, and unchanged knob rotation by
+default. The comparison prints changed physical-key labels. These checks do not
+prove every numeric keycode is meaningful to undocumented firmware; a passing
+file still requires Launcher and device testing.
+
+The current next-test candidate and exact physical/gameplay procedure are in
+`../exports/experiments/wow-keypad-layer/README.md`.
 
 ## Factory reset
 

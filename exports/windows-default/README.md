@@ -7,6 +7,7 @@ Expected design:
 - Layer 0: Mac base, preserved
 - Layer 1: Mac Fn, preserved
 - Layer 2: Windows base, conservative improvements only
+- Layer 2 knob press: Play/Pause
 - Layer 3: Windows Fn/utility
 
-Do not create a synthetic Launcher import file unless the actual export format has been captured and understood first.
+The factory baseline remains untouched. Generated candidates may be used now that the Launcher export format and keymap MD5 behavior have been captured and physically validated; only promote an export here as stable after physical import testing.

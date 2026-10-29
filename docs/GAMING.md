@@ -53,24 +53,26 @@ WASD, and the familiar Windows layout.
 
 ### Layer 3
 
-Keep factory utilities by default. For the gaming experiment, use Caps Lock as
-momentary Layer 3 and map six left-hand keys to standard keypad HID usages:
+Keep factory utilities by default. For the current gaming experiment, use Caps
+Lock as momentary Layer 3 and map six left-hand keys to shifted US-ANSI symbols:
 
 | Held key | Layer 3 output |
 |---|---|
-| Caps + Q | Numpad 1 |
-| Caps + E | Numpad 2 |
-| Caps + R | Numpad 3 |
-| Caps + F | Numpad 4 |
-| Caps + Z | Numpad 5 |
-| Caps + X | Numpad 6 |
+| Caps + Q | `!` |
+| Caps + E | `@` |
+| Caps + R | `#` |
+| Caps + F | `$` |
+| Caps + V | `%` |
+| Caps + C | `^` |
 
 WASD remain transparent on Layer 3 so movement passes through while Caps is
-held. These USB HID keypad usages are distinct from the top-row digits and are
-not F13-F24. They are a compatibility probe, not a production WoW profile: bind
-and test them in the current WoW Forever client before relying on them. Keypad
-behavior can vary with the client and Windows Num Lock state, so test both the
-game and ordinary Windows typing.
+held.
+
+These symbol assignments are equivalent to Shift+1 through Shift+6; they are
+not six independent HID usages. In WoW, they may therefore be recognized as the
+same bindings as ordinary Shift+1 through Shift+6 and can collide with existing
+bindings that already use those combinations. Treat this as a compatibility and
+ergonomics experiment, not a guaranteed source of six additional unique inputs.
 
 The factory Layer 3 has non-transparent Keychron-specific assignments at W/A/S/D.
 Setting them transparent is required for movement while the layer is active and
@@ -113,13 +115,13 @@ If tested, verify movement combinations such as:
 
 ## Validation Order
 
-1. Import `exports/experiments/wow-keypad-layer/Keymap-Q1-Ultra-8K-WoW-keypad-layer.json`.
-2. Confirm the Caps momentary layer, six keypad assignments, and transparent WASD
-	in Launcher and a Windows key-event tester.
-3. In WoW Forever's key-binding UI, attempt to bind Numpad 1 through Numpad 6.
-4. Test each binding in a safe area while moving with WASD and holding Caps.
-5. Test normal typing and the effect of Num Lock; rollback by importing the
-	factory export if any base behavior is wrong.
+1. Regenerate `exports/experiments/wow-keypad-layer/Keymap-Q1-Ultra-8K-WoW-keypad-layer.json` with `python tools/build_wow_keypad_layer.py`.
+2. Refresh that directory's `SHA256SUMS`, then import the regenerated JSON.
+3. Confirm Caps is momentary Layer 3, Q/E/R/F/V/C show `! @ # $ % ^`, W/A/S/D are transparent, and knob press is Play/Pause.
+4. In a Windows key-event tester, verify Caps+Q/E/R/F/V/C produces the intended shifted-key events.
+5. In WoW Forever's key-binding UI, attempt to bind each symbol and note whether the client records it as `!`/`@`/etc. or as Shift+1/Shift+2/etc.
+6. Test each binding in a safe area while moving with WASD and holding Caps.
+7. Check specifically for conflicts with existing Shift+1 through Shift+6 bindings; rollback by importing the factory export if any base behavior is wrong.
 
-Do not add Hold/Tap, macros, or multi-action automation to this profile. Promote
+Do not add Hold/Tap, macros, or multi-action automation to this profile yet. Promote
 it only after physical and in-game validation.
